@@ -14,23 +14,27 @@ public class Interface extends JPanel{
     public Interface(int width, int[] tab){
         this.tab = tab;
         this.width=width;
-
     }
 
     public void paint(Graphics g) {
         super.paint(g);
-        int x=0;
+        int x=120;
         int y=0;
         for (int i=0; i<tab.length; i++){
             g.setColor(new Color((this.tab[i] >> 16) & 0xFF, (this.tab[i] >> 8) & 0xFF, tab[i] & 0xFF));
 
             g.fillRect(x, y, 1, 1);
             x++;
-            if (x==width){
-                x=0;
+            if (x==width+120){
+                x=120;
                 y++;
             }
         }
+    }
+
+    public void redefine(int width, int[] tab){
+        this.tab = tab;
+        this.width=width;
     }
 
 }

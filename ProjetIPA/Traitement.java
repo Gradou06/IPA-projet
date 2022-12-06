@@ -23,6 +23,7 @@ public class Traitement {
     private int height;
     private Boolean isRGB;
     private int[] tabIntGrey;
+    private int[] previousRGBInt;
 
     public void setImgName(String imgName) {
         this.imgName = imgName;
@@ -47,6 +48,7 @@ public class Traitement {
         int[] px2;
         px2 = bi.getRGB(0,0,this.width,this.height,null,0,this.width);
         this.tabRGB=px2;
+        this.previousRGBInt=px2;
     }
 
     public void imgGreytoPixelTab(){
@@ -219,7 +221,7 @@ public class Traitement {
             return tabByte;
         }
 
-        public void reverseHautBas(){
+        public void reverseGreyHautBas(){
             byte[] reversed = new byte[this.tabGrey.length];
             for (int j=0;j<this.height;j++){
                 for (int i=0; i<this.width; i++){
@@ -229,7 +231,7 @@ public class Traitement {
             this.tabGrey=reversed;
             }
 
-        public void changeGreytoRGB(){
+        public void changeGreytoRGB(){ //ILLEGAL
             int red;
             int green;
             int blue;
