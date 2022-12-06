@@ -1,10 +1,6 @@
 import java.awt.Color;
-
-import javax.swing.JButton;
-import javax.swing.JFrame;
 import javax.swing.JPanel;
 import java.awt.Graphics;
-import java.awt.Canvas;
 
 public class Interface extends JPanel{
     private int width;
@@ -18,15 +14,15 @@ public class Interface extends JPanel{
 
     public void paint(Graphics g) {
         super.paint(g);
-        int x=120;
-        int y=0;
+        int x=200;
+        int y=10;
         for (int i=0; i<tab.length; i++){
             g.setColor(new Color((this.tab[i] >> 16) & 0xFF, (this.tab[i] >> 8) & 0xFF, tab[i] & 0xFF));
 
             g.fillRect(x, y, 1, 1);
             x++;
-            if (x==width+120){
-                x=120;
+            if (x==width+200){
+                x=200;
                 y++;
             }
         }
