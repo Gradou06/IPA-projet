@@ -172,7 +172,7 @@ public class TraitementRGB extends Traitement{
             int green=0;
             int blue=0;
             int alpha=0;
-            int nb=1;
+            int nb=0;
         for (int j=-(matriceC.length-1)/2;j<(matriceC.length-1)/2;j++){
             for (int i=-(matriceC.length-1)/2;i<(matriceC.length-1)/2;i++){
                 if (!(x+i<0 || x+i>=this.width || y+j<0 || y+j>=this.height || matriceC[j+(matriceC.length-1)/2][i+(matriceC.length-1)/2]==0)){
