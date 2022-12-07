@@ -79,6 +79,7 @@ public class TraitementRGB extends Traitement{
             int green;
             int blue;
             int alpha;
+            int[] tab= new int[this.tabRGB.length];
             for (int i=0; i<this.tabRGB.length; i++){
                 red = (this.tabRGB[i] >> 16) & 0xFF;
                 green = (this.tabRGB[i] >> 8) & 0xFF;
@@ -87,8 +88,9 @@ public class TraitementRGB extends Traitement{
                 red = p-red;
                 green = p-green;
                 blue = p-blue;
-                this.tabRGB[i]= (alpha << 24) | (red << 16) | (green << 8) | blue;
+                tab[i]= (alpha << 24) | (red << 16) | (green << 8) | blue;
                 }
+            this.tabRGB=tab;
             this.newAction();
             }
         
@@ -97,6 +99,7 @@ public class TraitementRGB extends Traitement{
             int green;
             int blue;
             int alpha;
+            int[] tab= new int[this.tabRGB.length];
             for (int i=0; i<this.tabRGB.length; i++){
                 red = (this.tabRGB[i] >> 16) & 0xFF;
                 green = (this.tabRGB[i] >> 8) & 0xFF;
@@ -105,8 +108,9 @@ public class TraitementRGB extends Traitement{
                 red = red*red/255;
                 green = green*green/255;
                 blue = blue*blue/255;
-                this.tabRGB[i]= (alpha << 24) | (red << 16) | (green << 8) | blue;
+                tab[i]= (alpha << 24) | (red << 16) | (green << 8) | blue;
                 }
+            this.tabRGB=tab;
             this.newAction();
             }
         
@@ -115,6 +119,7 @@ public class TraitementRGB extends Traitement{
             int green;
             int blue;
             int alpha;
+            int[] tab = new int[this.tabRGB.length];
             for (int i=0; i<this.tabRGB.length; i++){
                 red = (this.tabRGB[i] >> 16) & 0xFF;
                 green = (this.tabRGB[i] >> 8) & 0xFF;
@@ -123,8 +128,11 @@ public class TraitementRGB extends Traitement{
                 red =(int)(Math.sqrt(red)*Math.sqrt(255));
                 green =(int)(Math.sqrt(green)*Math.sqrt(255));
                 blue =(int)(Math.sqrt(blue)*Math.sqrt(255));
-                this.tabRGB[i]= (alpha << 24) | (red << 16) | (green << 8) | blue;
-                }
+                tab[i]= (alpha << 24) | (red << 16) | (green << 8) | blue;
+            }
+                this.tabRGB= tab;
+            
+                
             this.newAction();
         }
 
@@ -134,14 +142,18 @@ public class TraitementRGB extends Traitement{
             this.tabRGBBack[1]=this.tabRGBBack[2];
             this.tabRGBBack[2]=null;
 
+
             System.out.println("back");
 
         }
 
         public void newAction(){
+
             this.tabRGBBack[2]=this.tabRGBBack[1];
             this.tabRGBBack[1]=this.tabRGBBack[0];
             this.tabRGBBack[0]=this.tabRGB;
+            System.out.println(this.tabRGBBack[0][0]);
+            System.out.println(this.tabRGBBack[1][0]);
             System.out.println("new action");
         }
 

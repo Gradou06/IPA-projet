@@ -46,7 +46,7 @@ public class Menu extends JMenuBar{
         .getFileSystemView()
         .getHomeDirectory()
         );
-        FileNameExtensionFilter filter = new FileNameExtensionFilter("Images JPG", "jpg");
+        FileNameExtensionFilter filter = new FileNameExtensionFilter("Images PNG", "png");
         choose.addChoosableFileFilter(filter);
         int res = choose.showOpenDialog(null);
         if (res == JFileChooser.APPROVE_OPTION) {
