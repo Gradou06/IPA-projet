@@ -6,6 +6,7 @@ import javax.swing.JMenuBar;
 import javax.swing.JMenuItem;
 import javax.swing.JPanel;
 import javax.swing.JSlider;
+import javax.swing.JTextField;
 
 import java.io.File;
 import javax.swing.JFileChooser;
@@ -21,6 +22,7 @@ public class Menu extends JMenuBar{
     private Interface interface1;
     private JFrame frame;
     private JMenuBar menubar;
+    private int[][] matricC;
 
     public Menu(Traitement t, Interface interface1 , JFrame frame) {
         this.t = t;
@@ -120,6 +122,9 @@ public class Menu extends JMenuBar{
     // Définir le texte de l'étiquette
     label.setText("" + slider.getValue()); 
 
+    //POUR LA MATRCICE DE CONVOLUTION
+    TextFieldTest convolMatrice = new TextFieldTest(frame, t, interface1);
+
 
 
 
@@ -129,20 +134,7 @@ public class Menu extends JMenuBar{
     JButton reverseButton = new JButton("Reverse");
     JButton contrasteButton = new JButton("Contraste");
     JButton flipHButton = new JButton("Flip H/B");
-    JButton convolButton = new JButton("Convol");
 
-    convolButton.setBounds(0,156,200,30);
-    frame.add(new JPanel().add(convolButton));
-    int [][] tab = {{1,1,1,1,1},{1,1,1,1,1},{1,1,1,1,1},{1,1,1,1,1},{1,1,1,1,1}};
-    convolButton.addActionListener(new ActionListener() {
-        @Override
-        public void actionPerformed(ActionEvent evt) {
-            t.convolution(tab);
-            interface1.redefine(t.getWidth(),t.getTabRGB());
-            interface1.repaint();
-            frame.repaint();
-        }
-    });
 
     contrasteButton.setBounds(0,455,200,30);
     frame.add(new JPanel().add(contrasteButton));
