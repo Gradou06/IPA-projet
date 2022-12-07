@@ -39,4 +39,5 @@ public abstract class Traitement {
     public abstract void changeAssombrissement();
     public abstract void changeEclairage();
     public abstract void changeContraste(int p);
+    public abstract void convolution(int[][] matriceC);
 }

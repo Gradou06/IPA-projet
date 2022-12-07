@@ -142,9 +142,6 @@ public class TraitementRGB extends Traitement{
             this.tabRGBBack[1]=this.tabRGBBack[2];
             this.tabRGBBack[2]=null;
 
-
-            System.out.println("back");
-
         }
 
         public void newAction(){
@@ -152,10 +149,53 @@ public class TraitementRGB extends Traitement{
             this.tabRGBBack[2]=this.tabRGBBack[1];
             this.tabRGBBack[1]=this.tabRGBBack[0];
             this.tabRGBBack[0]=this.tabRGB;
-            System.out.println(this.tabRGBBack[0][0]);
-            System.out.println(this.tabRGBBack[1][0]);
-            System.out.println("new action");
         }
+
+        public void convolution(int[][] matriceC){
+            int[] tab = new int[this.tabRGB.length];
+            int x=0;
+            int y=0;
+            for (int i=0;i<this.tabRGB.length;i++){
+                tab[i]=this.convol(x,y,matriceC);
+                x++;
+                if (x==this.width){
+                    x=0;
+                    y++;
+                }
+            }
+            this.tabRGB=tab;
+            this.newAction();
+        }
+
+        public int convol(int x, int y, int[][] matriceC){
+            int red=0;
+            int green=0;
+            int blue=0;
+            int alpha=0;
+            int nb=1;
+        for (int j=-(matriceC.length-1)/2;j<(matriceC.length-1)/2;j++){
+            for (int i=-(matriceC.length-1)/2;i<(matriceC.length-1)/2;i++){
+                if (!(x+i<0 || x+i>=this.width || y+j<0 || y+j>=this.height || matriceC[j+(matriceC.length-1)/2][i+(matriceC.length-1)/2]==0)){
+                    red+= ((this.tabRGB[(y+j)*this.width+(x+i)] >> 16) & 0xFF)*matriceC[j+(matriceC.length-1)/2][i+(matriceC.length-1)/2];
+                    green+= ((this.tabRGB[(y+j)*this.width+(x+i)] >> 8) & 0xFF)*matriceC[j+(matriceC.length-1)/2][i+(matriceC.length-1)/2];
+                    blue+= (this.tabRGB[(y+j)*this.width+(x+i)] & 0xFF)*matriceC[j+(matriceC.length-1)/2][i+(matriceC.length-1)/2];
+                    alpha+= ((this.tabRGB[(y+j)*this.width+(x+i)] >> 24) & 0xFF)*matriceC[j+(matriceC.length-1)/2][i+(matriceC.length-1)/2];
+                    nb++;
+                }
+        
+        }
+    }
+    if (nb!=0){
+    red=red/nb;
+    green=green/nb;
+    blue=blue/nb;
+    alpha=alpha/nb;
+    }
+    else {
+        return this.tabRGB[y*this.width+x];
+    }
+    return (alpha << 24) | (red << 16) | (green << 8) | blue;
+    }
 
 
         
