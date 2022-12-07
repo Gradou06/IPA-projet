@@ -133,7 +133,7 @@ public class Menu extends JMenuBar{
 
     convolButton.setBounds(0,156,200,30);
     frame.add(new JPanel().add(convolButton));
-    int [][] tab = {{1,1,1},{1,1,1},{1,1,1}};
+    int [][] tab = {{1,1,1,1,1},{1,1,1,1,1},{1,1,1,1,1},{1,1,1,1,1},{1,1,1,1,1}};
     convolButton.addActionListener(new ActionListener() {
         @Override
         public void actionPerformed(ActionEvent evt) {

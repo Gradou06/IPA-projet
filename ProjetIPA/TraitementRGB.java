@@ -173,8 +173,8 @@ public class TraitementRGB extends Traitement{
             int blue=0;
             int alpha=0;
             int nb=0;
-        for (int j=-(matriceC.length-1)/2;j<(matriceC.length-1)/2;j++){
-            for (int i=-(matriceC.length-1)/2;i<(matriceC.length-1)/2;i++){
+        for (int j=-(matriceC.length-1)/2;j<(matriceC.length-1)/2+1;j++){
+            for (int i=-(matriceC.length-1)/2;i<(matriceC.length-1)/2+1;i++){
                 if (!(x+i<0 || x+i>=this.width || y+j<0 || y+j>=this.height || matriceC[j+(matriceC.length-1)/2][i+(matriceC.length-1)/2]==0)){
                     red+= ((this.tabRGB[(y+j)*this.width+(x+i)] >> 16) & 0xFF)*matriceC[j+(matriceC.length-1)/2][i+(matriceC.length-1)/2];
                     green+= ((this.tabRGB[(y+j)*this.width+(x+i)] >> 8) & 0xFF)*matriceC[j+(matriceC.length-1)/2][i+(matriceC.length-1)/2];
