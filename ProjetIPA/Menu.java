@@ -70,7 +70,7 @@ public class Menu extends JMenuBar{
 
     TextFieldTest convolMatrice = new TextFieldTest(frame, t, interface1);
     convolMatrice.build();
-    CreateButton button = new CreateButton(frame, t, interface1, slider);
+    CreateButton button = new CreateButton(frame, t, interface1, slider, this);
     button.build();
 
     changeImg.addActionListener(new ActionListener() {
@@ -140,10 +140,12 @@ public class Menu extends JMenuBar{
             frame.repaint();
         }
     });
+
+
     menu.add(save);
+    menu.add(changeImg);
     menu.add(exit);
     menu2.add(back);
-    menu.add(changeImg);
     menubar.add(menu);
     menubar.add(menu2);
     
@@ -152,5 +154,9 @@ public class Menu extends JMenuBar{
     
     
 }
+
+    public void redefine(Traitement t) {
+        this.t = t;
+    }
 }
 
