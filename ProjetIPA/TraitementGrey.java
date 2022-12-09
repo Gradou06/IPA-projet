@@ -18,6 +18,10 @@ public class TraitementGrey extends Traitement {
         super(imgName);
     }
 
+    public TraitementGrey(byte[] tabGrey, int width, int height) {
+        super(tabGrey, width, height);
+    }
+
 
     public void imgToPixelTab(){
         System.out.println("Grey");

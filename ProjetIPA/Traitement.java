@@ -12,6 +12,12 @@ public abstract class Traitement {
         this.imgName = imgName;
     }
 
+    public Traitement(byte[] tabGrey, int width, int height) {
+        this.tabGrey = tabGrey;
+        this.width = width;
+        this.height = height;
+    }
+
     public Traitement(){}
 
     

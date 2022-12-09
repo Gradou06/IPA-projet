@@ -10,12 +10,15 @@ public class CreateButton {
     private Traitement t;
     private Interface interface1;
     private JSlider slider;
+    private Menu menu;
 
-    public CreateButton(JFrame frame, Traitement t, Interface interface1, JSlider slider) {
+    public CreateButton(JFrame frame, Traitement t, Interface interface1, JSlider slider, Menu menu) {
         this.frame = frame;
         this.t = t;
         this.interface1 = interface1;
         this.slider = slider;
+        this.menu = menu;
+
     }
 
     public void build() {
@@ -106,6 +109,24 @@ public class CreateButton {
             else{
                 interface1.redefine(t.getWidth(),t.getTabGrey());
             }
+            interface1.repaint();
+            frame.repaint();
+        }
+    });
+
+    JButton changeToGreyButton = new JButton("Change to grey");
+    changeToGreyButton.setBounds(0,26,200,30);
+    frame.add(new JPanel().add(changeToGreyButton));
+    changeToGreyButton.addActionListener(new ActionListener() {
+        @Override
+        public void actionPerformed(ActionEvent evt) {
+            if (t instanceof TraitementRGB) {
+                t.changeColor();
+                t=new TraitementGrey(t.getTabGrey(),t.getWidth(),t.getHeight());
+                interface1.redefine(t.getWidth(),t.getTabGrey());
+
+            }
+            menu.redefine(t);
             interface1.repaint();
             frame.repaint();
         }
