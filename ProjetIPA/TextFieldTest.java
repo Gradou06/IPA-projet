@@ -160,6 +160,10 @@ public class TextFieldTest implements ActionListener
     }
   }
 
+  public void redefine(Traitement t){
+    this.t=t;
+  }
+
 
 
   public void actionPerformed(ActionEvent e) 

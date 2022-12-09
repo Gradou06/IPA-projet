@@ -68,6 +68,8 @@ public class Menu extends JMenuBar{
     // Définir le texte de l'étiquette
     label.setText("" + slider.getValue()); 
 
+    TextFieldTest convolMatrice = new TextFieldTest(frame, t, interface1);
+    convolMatrice.build();
     CreateButton button = new CreateButton(frame, t, interface1, slider);
     button.build();
 
@@ -105,6 +107,7 @@ public class Menu extends JMenuBar{
             interface1.redefine(t.getWidth(),t.getTabGrey());
         }
             button.redefine(frame, t, interface1, slider);
+            convolMatrice.redefine( t);
             interface1.repaint();
             frame.repaint();
         }
@@ -146,9 +149,6 @@ public class Menu extends JMenuBar{
     
     frame.setJMenuBar(menubar);
 
-    //POUR LA MATRCICE DE CONVOLUTION
-    TextFieldTest convolMatrice = new TextFieldTest(frame, t, interface1);
-    convolMatrice.build();
     
     
 }
