@@ -175,7 +175,12 @@ public class TextFieldTest implements ActionListener
             }
         
         t.convolution(matrice);
-        interface1.redefine(t.getWidth(),t.getTabRGB());
+        if (t instanceof TraitementRGB) {
+          interface1.redefine(t.getWidth(),t.getTabRGB());
+      }
+      else{
+          interface1.redefine(t.getWidth(),t.getTabGrey());
+      }
         interface1.repaint();
         f.repaint();
         }

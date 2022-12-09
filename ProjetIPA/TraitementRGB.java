@@ -9,11 +9,14 @@ import java.awt.image.WritableRaster;
 
 public class TraitementRGB extends Traitement{
 
+    protected int[][] tabRGBBack= new int[3][];
+
     public TraitementRGB(String imgName) {
         super(imgName);
     }
 
     public void imgToPixelTab(){
+        System.out.println("RGB");
         RenderedOp ropimage; 
         ropimage = JAI.create("fileload", imgName);
         this.width = ropimage.getWidth();
@@ -24,6 +27,7 @@ public class TraitementRGB extends Traitement{
         this.tabRGB=px2;
         this.tabRGBBack[0]=px2;
     }
+
 
     public void reverseImg(){
         int[] reversed = new int[this.tabRGB.length];
@@ -196,6 +200,8 @@ public class TraitementRGB extends Traitement{
     }
     return (alpha << 24) | (red << 16) | (green << 8) | blue;
     }
+
+    public int[] normalize(byte[] tabByte){return (new int[0]);}
 
 
         

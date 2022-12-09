@@ -12,11 +12,15 @@ import java.awt.image.SampleModel;
 
 public class TraitementGrey extends Traitement {
 
+    protected byte[][] tabGreyBack= new byte[3][];
+
     public TraitementGrey(String imgName) {
         super(imgName);
     }
 
+
     public void imgToPixelTab(){
+        System.out.println("Grey");
         RenderedOp ropimage;
         ropimage = JAI.create("fileload", imgName);
         this.width = ropimage.getWidth();
@@ -26,6 +30,7 @@ public class TraitementGrey extends Traitement {
         byte[] px;
         px = db.getData();
         this.tabGrey=px;
+        this.tabGreyBack[0]=px;
     }
 
     public void saveImg(){
@@ -45,6 +50,7 @@ public class TraitementGrey extends Traitement {
                     }
                 }
             this.tabGrey=reversed;
+            this.newAction();
             }
     public void changeContraste(int p){ // généralement p=255
             byte grey;
@@ -52,6 +58,7 @@ public class TraitementGrey extends Traitement {
                 grey = (byte)(p-this.tabGrey[i]);
                 this.tabGrey[i]= grey;
                 }
+                this.newAction();
             }
 
     public void changeAssombrissement(){
@@ -60,6 +67,7 @@ public class TraitementGrey extends Traitement {
                 this.tabIntGrey[i] =(this.tabIntGrey[i]*this.tabIntGrey[i])/255;   
                 }
                 this.tabGrey=this.unNormalize(this.tabIntGrey);
+                this.newAction();
             }
 
     public void changeEclairage(){
@@ -68,6 +76,7 @@ public class TraitementGrey extends Traitement {
                 this.tabIntGrey[i] = (int)(Math.sqrt(this.tabIntGrey[i])*Math.sqrt(255));
             }
             this.tabGrey=this.unNormalize(this.tabIntGrey);
+            this.newAction();
         }
     
     public int[] normalize(byte[] tabByte){
@@ -84,6 +93,7 @@ public class TraitementGrey extends Traitement {
                 tabByte[i]=(byte)tabInt[i];
             }
             return tabByte;
+            
         }
 
         public void reverseHautBas(){
@@ -94,6 +104,7 @@ public class TraitementGrey extends Traitement {
                     }
                 }
             this.tabGrey=reversed;
+            this.newAction();
             }
 
     public void changeColor(){ //ILLEGAL
@@ -111,7 +122,58 @@ public class TraitementGrey extends Traitement {
                 }
                 this.isRGB=true;
                 this.tabGrey=null;
+                this.newAction();
             }
 
-    public void back(){}
+            public void back(){
+                this.tabGrey=this.tabGreyBack[1];
+                this.tabGreyBack[0]=this.tabGreyBack[1];
+                this.tabGreyBack[1]=this.tabGreyBack[2];
+                this.tabGreyBack[2]=null;
+    
+            }
+    
+            public void newAction(){
+    
+                this.tabGreyBack[2]=this.tabGreyBack[1];
+                this.tabGreyBack[1]=this.tabGreyBack[0];
+                this.tabGreyBack[0]=this.tabGrey;
+            }
+
+    public void convolution(int[][] matriceC){
+        byte[] tab = new byte[this.tabGrey.length];
+        int x=0;
+        int y=0;
+        for (int i=0;i<this.tabGrey.length;i++){
+            tab[i]=this.convol(x,y,matriceC);
+            x++;
+            if (x==this.width){
+                x=0;
+                y++;
+            }
+        }
+        this.tabGrey=tab;
+        this.newAction();
+    }
+
+    public byte convol(int x, int y, int[][] matriceC){
+        int px=0;
+        int nb=0;
+    for (int j=-(matriceC.length-1)/2;j<(matriceC.length-1)/2+1;j++){
+        for (int i=-(matriceC.length-1)/2;i<(matriceC.length-1)/2+1;i++){
+            if (!(x+i<0 || x+i>=this.width || y+j<0 || y+j>=this.height || matriceC[j+(matriceC.length-1)/2][i+(matriceC.length-1)/2]==0)){
+                px+=Byte.toUnsignedInt(this.tabGrey[(y+j)*this.width+(x+i)])*matriceC[j+(matriceC.length-1)/2][i+(matriceC.length-1)/2];
+                nb++;
+            }
+    
+    }
+}
+if (nb!=0){
+    px=px/nb;
+}
+else {
+    return this.tabGrey[y*this.width+x];
+}
+return (byte)px;
+}
 }

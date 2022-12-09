@@ -32,7 +32,12 @@ public class CreateButton {
         @Override
         public void actionPerformed(ActionEvent evt) {
             t.changeContraste(slider.getValue());
-            interface1.redefine(t.getWidth(),t.getTabRGB());
+            if (t instanceof TraitementRGB) {
+                interface1.redefine(t.getWidth(),t.getTabRGB());
+            }
+            else{
+                interface1.redefine(t.getWidth(),t.getTabGrey());
+            }
             interface1.repaint();
             frame.repaint();
         }
@@ -44,7 +49,12 @@ public class CreateButton {
         @Override
         public void actionPerformed(ActionEvent evt) {
             t.reverseHautBas();
-            interface1.redefine(t.getWidth(),t.getTabRGB());
+            if (t instanceof TraitementRGB) {
+                interface1.redefine(t.getWidth(),t.getTabRGB());
+            }
+            else{
+                interface1.redefine(t.getWidth(),t.getTabGrey());
+            }
             interface1.repaint();
             frame.repaint();
         }
@@ -56,7 +66,12 @@ public class CreateButton {
         @Override
         public void actionPerformed(ActionEvent evt) {
             t.reverseImg();
-            interface1.redefine(t.getWidth(),t.getTabRGB());
+            if (t instanceof TraitementRGB) {
+                interface1.redefine(t.getWidth(),t.getTabRGB());
+            }
+            else{
+                interface1.redefine(t.getWidth(),t.getTabGrey());
+            }
             interface1.repaint();
             frame.repaint();
         }
@@ -68,7 +83,12 @@ public class CreateButton {
         @Override
         public void actionPerformed(ActionEvent evt) {
             t.changeAssombrissement();
-            interface1.redefine(t.getWidth(),t.getTabRGB());
+            if (t instanceof TraitementRGB) {
+                interface1.redefine(t.getWidth(),t.getTabRGB());
+            }
+            else{
+                interface1.redefine(t.getWidth(),t.getTabGrey());
+            }
             interface1.repaint();
             frame.repaint();
         }
@@ -80,11 +100,23 @@ public class CreateButton {
         @Override
         public void actionPerformed(ActionEvent evt) {
             t.changeEclairage();
-            interface1.redefine(t.getWidth(),t.getTabRGB());
+            if (t instanceof TraitementRGB) {
+                interface1.redefine(t.getWidth(),t.getTabRGB());
+            }
+            else{
+                interface1.redefine(t.getWidth(),t.getTabGrey());
+            }
             interface1.repaint();
             frame.repaint();
         }
     });
+    }
+
+    public void redefine(JFrame frame, Traitement t, Interface interface1, JSlider slider) {
+        this.frame = frame;
+        this.t = t;
+        this.interface1 = interface1;
+        this.slider = slider;
     }
 
 

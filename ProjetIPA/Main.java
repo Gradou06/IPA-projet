@@ -8,7 +8,7 @@ public class Main {
     public static void main(String[] args) {
         Traitement t;
         //DETECTION SI RGB OU GREY (CHANGE_IMG ?)
-        String fn = "D:\\Cours\\MaM3\\IPA\\IPA-projet\\ProjetIPA\\images\\shining.png";
+        String fn = "D:\\Cours\\MaM3\\IPA\\IPA-projet\\ProjetIPA\\images\\Accueil.png";
         RenderedOp ropimage;
         ropimage = JAI.create("fileload", fn);
         ColorModel cm = ropimage.getColorModel();
@@ -20,8 +20,10 @@ public class Main {
             }
         t.setImgName(fn);
         // JUSQUE LA
+        Interface interface1;
     JFrame frame = new JFrame("Traitement d'image");
-    Interface interface1 = new Interface(t.getWidth(),t.getTabRGB());
+    interface1 = new Interface(t.getWidth(),t.getTabRGB());
+    
     Menu menu = new Menu(t,interface1,frame);
     menu.build();
     frame.add(interface1);

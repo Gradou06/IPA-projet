@@ -6,7 +6,7 @@ public abstract class Traitement {
     protected int height;
     protected Boolean isRGB;
     protected int[] tabIntGrey;
-    protected int[][] tabRGBBack= new int[3][];
+    
 
     public Traitement(String imgName) {
         this.imgName = imgName;
@@ -40,4 +40,5 @@ public abstract class Traitement {
     public abstract void changeEclairage();
     public abstract void changeContraste(int p);
     public abstract void convolution(int[][] matriceC);
+    public abstract int[] normalize(byte[] tabByte);
 }
