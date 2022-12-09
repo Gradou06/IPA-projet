@@ -23,6 +23,7 @@ public class Main {
     JFrame frame = new JFrame("Traitement d'image");
     Interface interface1 = new Interface(t.getWidth(),t.getTabRGB());
     Menu menu = new Menu(t,interface1,frame);
+    menu.build();
     frame.add(interface1);
     frame.pack();
     frame.setSize(t.getWidth()+300,t.getHeight()+200);
