@@ -7,12 +7,13 @@ public class TextFieldTest implements ActionListener
   int[][] matriceC5= new int[5][5];
   int[][] matrice;
   Traitement t;
-  JFrame frame;
+  JFrame f;
     Interface interface1;
   
   TextFieldTest(JFrame f,Traitement t, Interface interface1){
     this.t=t;
     this.interface1=interface1;
+    this.f=f;
     this.text1 = new JTextField("0");
     this.text2 = new JTextField("0");
     this.text3 = new JTextField("0");
@@ -38,6 +39,8 @@ public class TextFieldTest implements ActionListener
     this.text23 = new JTextField("0");
     this.text24 = new JTextField("0");
     this.text25 = new JTextField("0");
+  }
+  public void build(){
     int x = 30;
     int y = 200;
     int width=20;
@@ -97,7 +100,6 @@ public class TextFieldTest implements ActionListener
     btn.setBounds(00,156,200,30);
     btn.addActionListener(this);
     f.add(btn);
-    frame=f;
   }
 
   public Boolean verif(){
@@ -137,19 +139,23 @@ public class TextFieldTest implements ActionListener
 
   public int getDim(){
     int dim=0;
-    int max=0;
     for(int j=0;j<5;j++){
         for(int i=0;i<5;i++){
             if(matriceC5[j][i]!=0){
                 dim=Math.max(Math.max(i,j),dim);
             }
         }
+    
     }
-    if (dim==1 || dim==3 || dim==5){
+    dim+=1;
+    if (dim==2 || dim==4){
+        return dim+1;
+    }
+    else if (dim==3 || dim==5){
         return dim;
     }
     else{
-        JOptionPane.showMessageDialog(null, "Prière de mettre une matrice de dimension 1,3 ou 5");
+        JOptionPane.showMessageDialog(null, "Prière de mettre une matrice de dimension valide");
         return -1;
     }
   }
@@ -171,7 +177,7 @@ public class TextFieldTest implements ActionListener
         t.convolution(matrice);
         interface1.redefine(t.getWidth(),t.getTabRGB());
         interface1.repaint();
-        frame.repaint();
+        f.repaint();
         }
     }
     

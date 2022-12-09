@@ -124,77 +124,10 @@ public class Menu extends JMenuBar{
 
     //POUR LA MATRCICE DE CONVOLUTION
     TextFieldTest convolMatrice = new TextFieldTest(frame, t, interface1);
-
-
-
-
+    convolMatrice.build();
     // LES BOUTONS
-    JButton assombrissemeButton = new JButton("Assombrissement");
-    JButton eclaircissementButton = new JButton("Eclaircissement");
-    JButton reverseButton = new JButton("Reverse");
-    JButton contrasteButton = new JButton("Contraste");
-    JButton flipHButton = new JButton("Flip H/B");
-
-
-    contrasteButton.setBounds(0,455,200,30);
-    frame.add(new JPanel().add(contrasteButton));
-    contrasteButton.addActionListener(new ActionListener() {
-        @Override
-        public void actionPerformed(ActionEvent evt) {
-            t.changeContraste(slider.getValue());
-            interface1.redefine(t.getWidth(),t.getTabRGB());
-            interface1.repaint();
-            frame.repaint();
-        }
-    });
-
-    flipHButton.setBounds(0,104,200,30);
-    frame.add(new JPanel().add(flipHButton));
-    flipHButton.addActionListener(new ActionListener() {
-        @Override
-        public void actionPerformed(ActionEvent evt) {
-            t.reverseHautBas();
-            interface1.redefine(t.getWidth(),t.getTabRGB());
-            interface1.repaint();
-            frame.repaint();
-        }
-    });
-
-    reverseButton.setBounds(0,78,200,30);
-    frame.add(new JPanel().add(reverseButton));
-    reverseButton.addActionListener(new ActionListener() {
-        @Override
-        public void actionPerformed(ActionEvent evt) {
-            t.reverseImg();
-            interface1.redefine(t.getWidth(),t.getTabRGB());
-            interface1.repaint();
-            frame.repaint();
-        }
-    });
-
-    assombrissemeButton.setBounds(0,52,200,30);
-    frame.add(new JPanel().add(assombrissemeButton));
-    assombrissemeButton.addActionListener(new ActionListener() {
-        @Override
-        public void actionPerformed(ActionEvent evt) {
-            t.changeAssombrissement();
-            interface1.redefine(t.getWidth(),t.getTabRGB());
-            interface1.repaint();
-            frame.repaint();
-        }
-    });
-    
-    eclaircissementButton.setBounds(0,130,200,30);
-    frame.add(new JPanel().add(eclaircissementButton));
-    eclaircissementButton.addActionListener(new ActionListener() {
-        @Override
-        public void actionPerformed(ActionEvent evt) {
-            t.changeEclairage();
-            interface1.redefine(t.getWidth(),t.getTabRGB());
-            interface1.repaint();
-            frame.repaint();
-        }
-    });
+    CreateButton button = new CreateButton(frame, t, interface1, slider);
+    button.build();
     
 }
 }

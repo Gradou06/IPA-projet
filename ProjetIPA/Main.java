@@ -8,7 +8,7 @@ public class Main {
     public static void main(String[] args) {
         Traitement t;
         //DETECTION SI RGB OU GREY (CHANGE_IMG ?)
-        String fn = "F:\\Cours\\MaM3\\IPA-projet\\ProjetIPA\\images\\shining.png";
+        String fn = "D:\\Cours\\MaM3\\IPA\\IPA-projet\\ProjetIPA\\images\\shining.png";
         RenderedOp ropimage;
         ropimage = JAI.create("fileload", fn);
         ColorModel cm = ropimage.getColorModel();
