@@ -107,7 +107,7 @@ public class Menu extends JMenuBar{
             interface1.redefine(t.getWidth(),t.getTabGrey());
         }
             button.redefine(frame, t, interface1, slider);
-            convolMatrice.redefine( t);
+            convolMatrice.redefine(t);
             interface1.repaint();
             frame.repaint();
         }
@@ -117,7 +117,8 @@ public class Menu extends JMenuBar{
     save.addActionListener(new ActionListener() {
         @Override
         public void actionPerformed(ActionEvent evt) {
-            t.saveImg();
+            System.out.println(t.imgName);
+            t.saveImg(t.imgName);
         }
     });
     exit.addActionListener(new ActionListener() {

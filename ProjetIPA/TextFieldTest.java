@@ -185,7 +185,6 @@ public class TextFieldTest implements ActionListener
       else{
           interface1.redefine(t.getWidth(),t.getTabGrey());
       }
-        interface1.repaint();
         f.repaint();
         }
     }

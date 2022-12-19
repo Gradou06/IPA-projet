@@ -37,13 +37,14 @@ public class TraitementGrey extends Traitement {
         this.tabGreyBack[0]=px;
     }
 
-    public void saveImg(){
+    public void saveImg(String name){
         int IMG_WIDTH = this.width;
         int IMG_HEIGHT = this.height;
         SampleModel sm = RasterFactory.createBandedSampleModel(DataBuffer.TYPE_BYTE,IMG_WIDTH,IMG_HEIGHT,1);
         BufferedImage image = new BufferedImage(IMG_WIDTH, IMG_HEIGHT, BufferedImage.TYPE_BYTE_GRAY);
         image.setData(Raster.createRaster(sm, new DataBufferByte(this.tabGrey, this.tabGrey.length), new Point()));
-        JAI.create("filestore",image,"res-gs.png","PNG");
+        JAI.create("filestore",image, name.substring(0,name.length()-4)+"-gs.png","PNG");
+        System.out.println(name);
                 }
     
     public void reverseImg(){

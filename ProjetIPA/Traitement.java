@@ -28,6 +28,8 @@ public abstract class Traitement {
         this.imgName = imgName;
         this.imgToPixelTab();
             }
+    
+    public void changeImgName(String name){this.imgName=name;}
     public void settabRgb(int[] tabRGB) {this.tabRGB = tabRGB;}
     public byte[] getTabGrey(){return this.tabGrey;}
     public int[] getTabRGB(){return this.tabRGB;}
@@ -39,7 +41,7 @@ public abstract class Traitement {
     public abstract void back();
     public abstract void imgToPixelTab();
     public abstract void changeColor();
-    public abstract void saveImg();
+    public abstract void saveImg(String name);
     public abstract void reverseImg();
     public abstract void reverseHautBas();
     public abstract void changeAssombrissement();

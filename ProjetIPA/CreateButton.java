@@ -121,10 +121,11 @@ public class CreateButton {
         @Override
         public void actionPerformed(ActionEvent evt) {
             if (t instanceof TraitementRGB) {
+                String name= t.imgName;
                 t.changeColor();
                 t=new TraitementGrey(t.getTabGrey(),t.getWidth(),t.getHeight());
+                t.changeImgName(name);
                 interface1.redefine(t.getWidth(),t.getTabGrey());
-
             }
             menu.redefine(t);
             interface1.repaint();

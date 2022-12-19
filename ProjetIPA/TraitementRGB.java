@@ -51,13 +51,13 @@ public class TraitementRGB extends Traitement{
         this.newAction();
         }
 
-        public void saveImg(){
+        public void saveImg(String name){
             DataBufferInt dataBuffer = new DataBufferInt(this.tabRGB, this.tabRGB.length);
             ColorModel colorModel = new DirectColorModel(32,0xFF0000,0xFF00,0xFF,0xFF000000);
             WritableRaster raster = Raster.createPackedRaster(dataBuffer, this.width, this.height, this.width,
             ((DirectColorModel) colorModel).getMasks(), null);
             BufferedImage image = new BufferedImage(colorModel, raster, colorModel.isAlphaPremultiplied(), null);
-            JAI.create("filestore", image, "res.png", "png");
+            JAI.create("filestore", image, name, "png");
         }
 
         public void changeColor(){
