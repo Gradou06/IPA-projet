@@ -6,7 +6,11 @@ import javax.media.jai.JAI;
 import javax.media.jai.RenderedOp;
 import java.awt.image.DataBufferInt;
 import java.awt.image.WritableRaster;
-
+/*
+ * La classe permets de traiter les images en couleurs
+ * Elle hérite de la classe Traitement
+ * tabRGBBack est le tableau contenant la valeur de chaque  pixel pour les 3 couleurs Red,Blue et Green
+ */
 public class TraitementRGB extends Traitement{
 
     protected int[][] tabRGBBack= new int[3][];
@@ -14,7 +18,9 @@ public class TraitementRGB extends Traitement{
     public TraitementRGB(String imgName) {
         super(imgName);
     }
-
+    /**
+     * Transforme une image en un tableau de pixel
+     */
     public void imgToPixelTab(){
         System.out.println("RGB");
         RenderedOp ropimage; 
@@ -28,7 +34,9 @@ public class TraitementRGB extends Traitement{
         this.tabRGBBack[0]=px2;
     }
 
-
+    /*
+     * Permets de retourner l'image de gauche à droite
+     */
     public void reverseImg(){
         int[] reversed = new int[this.tabRGB.length];
         for (int j=0;j<this.height;j++){
@@ -40,15 +48,23 @@ public class TraitementRGB extends Traitement{
         this.tabRGB=reversed;
         this.newAction();
         }
-    
+    /*
+     * @return le tableau de pixel RGB contenant l'image
+     */
     public int[][] getTabRGBBack(){
         return this.tabRGBBack;
     }
 
+    /*
+     * @return le tableau de byte contenant l'image en gris
+     */
     public byte[][] getTabGreyBack(){
         return null;
     }
 
+    /*
+     * permets de retourner l'image de haut en bas
+     */
     public void reverseHautBas(){
         int[] reversed = new int[this.tabRGB.length];
         for (int i=0; i<this.width;i++){
@@ -63,6 +79,10 @@ public class TraitementRGB extends Traitement{
         this.newAction();
         }
 
+        /*
+         * permets de sauvegarder une image
+         * @param name le nom de l'image que l'on veut sauvegarder
+         */
         public void saveImg(String name){
             DataBufferInt dataBuffer = new DataBufferInt(this.tabRGB, this.tabRGB.length);
             ColorModel colorModel = new DirectColorModel(32,0xFF0000,0xFF00,0xFF,0xFF000000);
@@ -72,6 +92,9 @@ public class TraitementRGB extends Traitement{
             JAI.create("filestore", image, name, "png");
         }
 
+        /*
+         * permets de passer une image couleur en une image grise
+         */
         public void changeColor(){
             int red;
             int green;
@@ -90,6 +113,10 @@ public class TraitementRGB extends Traitement{
                 this.newAction();
             }
         
+            /*
+             * Permets d'appliquer un contraste sur l'image
+             * @param p désigne la valeur de contraste de l'image (255 contraste l'image à 100%)
+             */
         public void changeContraste(int p){ // généralement p=255
             int red;
             int green;
@@ -110,6 +137,9 @@ public class TraitementRGB extends Traitement{
             this.newAction();
             }
         
+            /*
+             * Permets d'assombrir l'image
+             */
         public void changeAssombrissement(){
             int red;
             int green;
@@ -130,6 +160,9 @@ public class TraitementRGB extends Traitement{
             this.newAction();
             }
         
+            /*
+             * Permets d'éclairer l'image
+             */
         public void changeEclairage(){
             int red;
             int green;
@@ -152,6 +185,9 @@ public class TraitementRGB extends Traitement{
             this.newAction();
         }
 
+        /*
+         * Permets de récuperer l'image d'avant l'action précédente
+         */
         public void back(){
             this.tabRGB=this.tabRGBBack[1];
             this.tabRGBBack[0]=this.tabRGBBack[1];
@@ -159,14 +195,19 @@ public class TraitementRGB extends Traitement{
             this.tabRGBBack[2]=null;
 
         }
-
+        /*
+         * Garde en mémoire les 2 dernieres images pour pouvoir retourner en arriere plus tard
+         */
         public void newAction(){
 
             this.tabRGBBack[2]=this.tabRGBBack[1];
             this.tabRGBBack[1]=this.tabRGBBack[0];
             this.tabRGBBack[0]=this.tabRGB;
         }
-
+        /*
+         * Permets d'appliquer une matrice de convolution sur l'image
+         * @param matriceC la matrice de convolution que l'on va appliquer sur l'image
+         */
         public void convolution(int[][] matriceC){
             int[] tab = new int[this.tabRGB.length];
             int x=0;
@@ -182,7 +223,12 @@ public class TraitementRGB extends Traitement{
             this.tabRGB=tab;
             this.newAction();
         }
-
+        /*
+         * Calcule chaque pixel du tableau de pixel
+         * @param x la colonne sur laquelle on se trouve
+         * @param y la ligne sur laquelle on se trouve
+         * @return le pixel a mettre dans le tableau
+         */
         public int convol(int x, int y, int[][] matriceC){
             int red=0;
             int green=0;
@@ -212,7 +258,9 @@ public class TraitementRGB extends Traitement{
     }
     return (alpha << 24) | (red << 16) | (green << 8) | blue;
     }
-
+    
+    /* 
+     */
     public int[] normalize(byte[] tabByte){return (new int[0]);}
 
 

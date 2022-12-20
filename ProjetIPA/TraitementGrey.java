@@ -10,6 +10,11 @@ import java.awt.image.DataBufferByte;
 import java.awt.image.DataBuffer;
 import java.awt.image.SampleModel;
 
+/*
+ * La classe permets de traiter les images en gris
+ * Elle hérite de la classe Traitement
+ * tabGreyBack est le tableau contenant la valeur de chaque  pixel
+ */
 public class TraitementGrey extends Traitement {
 
     protected byte[][] tabGreyBack= new byte[3][];
@@ -22,15 +27,23 @@ public class TraitementGrey extends Traitement {
         super(tabGrey, width, height);
     }
 
+    /*
+     * @return l'attribut contenant la valeur de chaque pixel
+     */
     public byte[][] getTabGreyBack(){
         return this.tabGreyBack;
     }
 
+    /*
+     * @return la valeur de chaque pixel avec les couleurs (donc null dans ce cas puisque l'image est grise)
+     */
     public int[][] getTabRGBBack(){
         return null;
     }
 
-
+    /**
+     * Transforme une image en un tableau de pixel
+     */
     public void imgToPixelTab(){
         System.out.println("Grey");
         RenderedOp ropimage;
@@ -44,7 +57,10 @@ public class TraitementGrey extends Traitement {
         this.tabGrey=px;
         this.tabGreyBack[0]=px;
     }
-
+        /*
+         * permets de sauvegarder une image
+         * @param name le nom de l'image que l'on veut sauvegarder
+         */
     public void saveImg(String name){
         int IMG_WIDTH = this.width;
         int IMG_HEIGHT = this.height;
@@ -54,7 +70,9 @@ public class TraitementGrey extends Traitement {
         JAI.create("filestore",image, name.substring(0,name.length()-4)+"-gs.png","PNG");
         System.out.println(name);
                 }
-    
+    /*
+     * Permets de retourner l'image de gauche à droite
+     */
     public void reverseImg(){
             byte[] reversed = new byte[this.tabGrey.length];
             for (int j=0;j<this.height;j++){
@@ -66,6 +84,11 @@ public class TraitementGrey extends Traitement {
             this.tabGrey=reversed;
             this.newAction();
             }
+
+    /*
+     * Permets d'appliquer un contraste sur l'image
+     * @param p désigne la valeur de contraste de l'image (255 contraste l'image à 100%)
+     */
     public void changeContraste(int p){ // généralement p=255
             byte grey;
             for (int i=0; i<this.tabGrey.length; i++){
@@ -74,7 +97,9 @@ public class TraitementGrey extends Traitement {
                 }
                 this.newAction();
             }
-
+            /*
+             * Permets d'assombrir l'image
+             */
     public void changeAssombrissement(){
             this.tabIntGrey = this.normalize(tabGrey);
             for (int i=0; i<this.tabGrey.length; i++){
@@ -83,7 +108,9 @@ public class TraitementGrey extends Traitement {
                 this.tabGrey=this.unNormalize(this.tabIntGrey);
                 this.newAction();
             }
-
+            /*
+             * Permets d'éclairer l'image
+             */
     public void changeEclairage(){
             this.tabIntGrey = this.normalize(tabGrey);
             for (int i=0; i<this.tabGrey.length; i++){
@@ -92,7 +119,12 @@ public class TraitementGrey extends Traitement {
             this.tabGrey=this.unNormalize(this.tabIntGrey);
             this.newAction();
         }
-    
+        
+    /*
+     * Permets de transformer un tableau de byte en un tableau de int
+     * @param tabByte un tableau contenant des Byte
+     * @return le tableau d'entier contenant les valeurs du tableau de byte
+     */
     public int[] normalize(byte[] tabByte){
             int[] tabInt = new int[tabByte.length];
             for (int i=0;i<tabByte.length;i++){
@@ -101,6 +133,11 @@ public class TraitementGrey extends Traitement {
             return tabInt;
         }
 
+        /*
+         * Permets de transformer un tableau d'entier en un tableau de byte
+         * @param tabInt un tableau contenant des entiers
+         * @return le tableau de byte contenant les valeurs du tableau d'entier
+         */
         public byte[] unNormalize(int[] tabInt){
             byte[] tabByte = new byte[tabInt.length];
             for (int i=0;i<tabInt.length;i++){
@@ -109,7 +146,9 @@ public class TraitementGrey extends Traitement {
             return tabByte;
             
         }
-
+    /*
+     * permets de retourner l'image de haut en bas
+     */
         public void reverseHautBas(){
             byte[] reversed = new byte[this.tabGrey.length];
             for (int i=0; i<this.width;i++){
@@ -141,7 +180,9 @@ public class TraitementGrey extends Traitement {
                 this.tabGrey=null;
                 this.newAction();
             }
-
+        /*
+         * Permets de récuperer l'image d'avant l'action précédente
+         */
             public void back(){
                 this.tabGrey=this.tabGreyBack[1];
                 this.tabGreyBack[0]=this.tabGreyBack[1];
@@ -149,14 +190,19 @@ public class TraitementGrey extends Traitement {
                 this.tabGreyBack[2]=null;
     
             }
-    
+        /*
+         * Garde en mémoire les 2 dernieres images pour pouvoir retourner en arriere plus tard
+         */
             public void newAction(){
     
                 this.tabGreyBack[2]=this.tabGreyBack[1];
                 this.tabGreyBack[1]=this.tabGreyBack[0];
                 this.tabGreyBack[0]=this.tabGrey;
             }
-
+        /*
+         * Permets d'appliquer une matrice de convolution sur l'image
+         * @param matriceC la matrice de convolution que l'on va appliquer sur l'image
+         */
     public void convolution(int[][] matriceC){
         byte[] tab = new byte[this.tabGrey.length];
         int x=0;
@@ -172,7 +218,12 @@ public class TraitementGrey extends Traitement {
         this.tabGrey=tab;
         this.newAction();
     }
-
+        /*
+         * Calcule chaque pixel du tableau de pixel
+         * @param x la colonne sur laquelle on se trouve
+         * @param y la ligne sur laquelle on se trouve
+         * @return le pixel a mettre dans le tableau
+         */
     public byte convol(int x, int y, int[][] matriceC){
         int px=0;
         int nb=0;

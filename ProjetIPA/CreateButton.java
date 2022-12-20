@@ -5,7 +5,9 @@ import javax.swing.JSlider;
 
 import java.awt.event.ActionListener;
 import java.awt.event.ActionEvent;
-
+/*
+ * Cette classe permets de créer tout les boutons et de faire leur association avec leurs actions
+ */
 public class CreateButton {
     private JFrame frame;
     private Traitement t;
@@ -14,6 +16,9 @@ public class CreateButton {
     private Menu menu;
     private TextFieldTest convolMatrice;
 
+    /*
+     * associe correctement l'ensemble de ce qui sera afficher au bouton
+     */
     public CreateButton(JFrame frame, Traitement t, Interface interface1, JSlider slider, Menu menu) {
         this.frame = frame;
         this.t = t;
@@ -22,11 +27,15 @@ public class CreateButton {
         this.menu = menu;
 
     }
-
+    /*
+     * @return convolMatrice tout ce qui concerne la matrice de convolution
+     */
     public void setConvolMatrice(TextFieldTest convolMatrice){
         this.convolMatrice=convolMatrice;
     }
-
+    /*
+     * Créer tout les boutons
+     */
     public void build() {
         JButton assombrissemeButton = new JButton("Assombrissement");
         JButton eclaircissementButton = new JButton("Eclaircissement");

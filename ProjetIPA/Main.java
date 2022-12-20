@@ -3,7 +3,9 @@ import java.awt.color.ColorSpace;
 import javax.media.jai.JAI;
 import javax.media.jai.RenderedOp;
 import javax.swing.JFrame;
-
+/*
+ * La classe principale à executer pour que le programme se lance
+ */
 public class Main {
     public static void main(String[] args) {
         Traitement t;

@@ -18,6 +18,9 @@ import java.awt.event.ActionListener;
 import java.awt.image.ColorModel;
 import java.awt.event.ActionEvent;
 
+/*
+ * Cette classe permets de créer la partie avec tout les boutons, les barres ainsi que les boites de texte
+ */
 public class Menu extends JMenuBar{
 
     private Traitement t;
@@ -26,7 +29,13 @@ public class Menu extends JMenuBar{
     private JMenuBar menubar;
     private TextFieldTest convolMatrice;
     private JMenuItem back;
-
+    /*
+     * Associe les bons parametres pour construire correctement le menu
+     * @param t l'image et son traitement associé
+     * @param interface1 l'endroit ou l'image sera placé
+     * @param frame la fenetre dans laquelle tout sera affiché
+     * @param convolMatrice la matrice de convolution
+     */
     public Menu(Traitement t, Interface interface1 , JFrame frame, TextFieldTest convolMatrice) {
         this.t = t;
         this.interface1 = interface1;
@@ -35,6 +44,9 @@ public class Menu extends JMenuBar{
         this.menubar = new JMenuBar();
     }
 
+    /*
+     * Permets de construire tout le menu,c'est à dire la partie avec les boutons ect...
+     */
     public void build() {
     // LA BARRE DE MENU
     JMenu menu = new JMenu("File");
@@ -165,10 +177,17 @@ public class Menu extends JMenuBar{
     
 }
 
+    /*
+     * Permets de changer d'image
+     * @param t le nouveau "Traitement" à afficher
+     */
     public void redefine(Traitement t) {
         this.t = t;
     }
 
+    /*
+     * 
+     */
     public void updateBack() {
         if (t instanceof TraitementRGB && t.getTabRGBBack()[1] == null) {
             back.setEnabled(false);

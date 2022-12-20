@@ -5,7 +5,15 @@ import java.io.BufferedWriter;
 import java.nio.file.Files;
 import java.nio.file.Path;
 import java.nio.file.Paths;
-
+/*
+ * Cette classe contient et affiche l'image
+ * @param width la taille de l'image
+ * @param tab le tableau contenant la valeur de chaque pixel
+ * @param tabG le tableau de byte contenant la valeur en byte de chaque pixel pour une image en gris
+ * @param type le type de l'image (gris ou rgb)
+ * @param bw le BufferedWriter qui permets d'écrire dans un fichier
+ * @param path permets d'utiliser la classe Path
+ */
 public class Interface extends JPanel{
     private int width;
     private int[] tab;
@@ -14,7 +22,12 @@ public class Interface extends JPanel{
     private BufferedWriter bw;
     private Path path;
     
-
+    /*
+     * Associe l'image à la classe interface
+     * @param tab le tableau contenant la valeur de chaque pixel
+     * @param width la taille de l'image
+     * @throw Exception lorsqu'il y a une erreur
+     */
     public Interface(int width, int[] tab){
         this.tab = tab;
         this.width=width;
@@ -37,6 +50,10 @@ public class Interface extends JPanel{
     }
     }
 
+    /*
+     * Permets d'afficher l'image sur l'interface
+     * @param g permets de dessiner sur l'interface
+     */
     public void paint(Graphics g) {
         super.paint(g);
         int x=200;
@@ -62,7 +79,7 @@ public class Interface extends JPanel{
             }
         }
     }}
-
+    
     public void redefine(int width, int[] tab){
         this.tab = tab;
         this.width=width;

@@ -1,3 +1,12 @@
+/*
+ * Cette classe permets de traiter une image
+ * imgName est le nom de l'image
+ * tabGrey est un tableau contenant la valeur de chaque pixel en Byte d'une image en gris
+ * tabRGB est un tableau contenant la valeur de chaque pixel d'une image en couleur
+ * width la taille de l'image et height sa hauteur
+ * isRGB désigne si l'image est en couleur ou en gris
+ * tabIntGrey est un tableau contenant la valeur de chaque pixel en int d'une image en gris
+ */
 public abstract class Traitement {
     protected String imgName;
     protected byte[] tabGrey;
@@ -7,11 +16,20 @@ public abstract class Traitement {
     protected Boolean isRGB;
     protected int[] tabIntGrey;
     
-
+    /*
+     * Associe l'image que l'on veut traiter à la classe
+     * @param imgName le nom de l'image que l'on veut traiter
+     */
     public Traitement(String imgName) {
         this.imgName = imgName;
     }
 
+    /*
+     * Associe l'image que l'on veut traiter à la classe
+     * @param tabGrey un tableau de byte
+     * @param la largeur de l'image
+     * @param la hauteur de l'image
+     */
     public Traitement(byte[] tabGrey, int width, int height) {
         this.tabGrey = tabGrey;
         this.width = width;
@@ -23,7 +41,10 @@ public abstract class Traitement {
     
 
 
-
+    /*
+     * permets de changer l'image que l'on veut traiter
+     * @param imgName le nom de l'image que l'on veut traiter
+     */
     public void setImgName(String imgName) {
         this.imgName = imgName;
         this.imgToPixelTab();
