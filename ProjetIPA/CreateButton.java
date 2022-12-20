@@ -2,6 +2,7 @@ import javax.swing.JButton;
 import javax.swing.JFrame;
 import javax.swing.JPanel;
 import javax.swing.JSlider;
+
 import java.awt.event.ActionListener;
 import java.awt.event.ActionEvent;
 
@@ -11,6 +12,7 @@ public class CreateButton {
     private Interface interface1;
     private JSlider slider;
     private Menu menu;
+    private TextFieldTest convolMatrice;
 
     public CreateButton(JFrame frame, Traitement t, Interface interface1, JSlider slider, Menu menu) {
         this.frame = frame;
@@ -21,12 +23,21 @@ public class CreateButton {
 
     }
 
+    public void setConvolMatrice(TextFieldTest convolMatrice){
+        this.convolMatrice=convolMatrice;
+    }
+
     public void build() {
         JButton assombrissemeButton = new JButton("Assombrissement");
         JButton eclaircissementButton = new JButton("Eclaircissement");
         JButton reverseButton = new JButton("Reverse");
         JButton contrasteButton = new JButton("Contraste");
         JButton flipHButton = new JButton("Flip H/B");
+        JButton convol3 = new JButton("3x3");
+        JButton convol5 = new JButton("5x5");
+        JButton convol = new JButton("Appliquer Convol");
+        convolMatrice.setMatriceLength(false);
+        convolMatrice.build();
 
 
     contrasteButton.setBounds(0,455,200,30);
@@ -113,6 +124,52 @@ public class CreateButton {
             frame.repaint();
         }
     });
+
+    //Bouton pour passer sur une matrice 3x3
+    convol3.setBounds(0,350,100,30);
+    frame.add(new JPanel().add(convol3));
+    convol3.addActionListener(new ActionListener() {
+        @Override
+        public void actionPerformed(ActionEvent evt) {
+            convolMatrice.setMatriceLength(true);
+            convolMatrice.build();
+            
+        }
+    });
+
+    //Bouton pour passer sur une matrice 5x5
+    convol5.setBounds(100,350,100,30);
+    frame.add(new JPanel().add(convol5));
+    convol5.addActionListener(new ActionListener(){
+        @Override
+        public void actionPerformed(ActionEvent evt) {
+            convolMatrice.setMatriceLength(false);
+            convolMatrice.build();
+            
+
+        }
+    });
+
+    //Le bouton pour appliquer la convolution
+    convol.setBounds(00,156,200,30);
+    frame.add(new JPanel().add(convol));
+    convol.addActionListener(new ActionListener(){
+        @Override
+        public void actionPerformed(ActionEvent evt){
+            convolMatrice.actionPerformed(evt);
+            t.convolution(convolMatrice.getMatrice());
+            if (t instanceof TraitementRGB) {
+                interface1.redefine(t.getWidth(),t.getTabRGB());
+            }
+            else{
+                interface1.redefine(t.getWidth(),t.getTabGrey());
+            }
+            interface1.repaint();
+            frame.repaint();
+        }
+
+    });
+
 
     JButton changeToGreyButton = new JButton("Change to grey");
     changeToGreyButton.setBounds(0,26,200,30);

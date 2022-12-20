@@ -69,8 +69,8 @@ public class Menu extends JMenuBar{
     label.setText("" + slider.getValue()); 
 
     TextFieldTest convolMatrice = new TextFieldTest(frame, t, interface1);
-    convolMatrice.build();
     CreateButton button = new CreateButton(frame, t, interface1, slider, this);
+    button.setConvolMatrice(convolMatrice);
     button.build();
 
     changeImg.addActionListener(new ActionListener() {
@@ -107,7 +107,6 @@ public class Menu extends JMenuBar{
             interface1.redefine(t.getWidth(),t.getTabGrey());
         }
             button.redefine(frame, t, interface1, slider);
-            convolMatrice.redefine(t);
             interface1.repaint();
             frame.repaint();
         }
