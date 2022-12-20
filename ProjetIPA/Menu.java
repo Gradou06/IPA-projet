@@ -107,7 +107,7 @@ public class Menu extends JMenuBar{
             // marche bien ici
             interface1.redefine(t.getWidth(),t.getTabGrey());
         }
-            button.redefine(frame, t, interface1, slider);
+            button.redefine(frame, t, interface1, slider, convolMatrice);
             interface1.repaint();
             frame.repaint();
         }

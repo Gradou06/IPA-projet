@@ -205,11 +205,12 @@ public class CreateButton {
     });
     }
 
-    public void redefine(JFrame frame, Traitement t, Interface interface1, JSlider slider) {
+    public void redefine(JFrame frame, Traitement t, Interface interface1, JSlider slider, TextFieldTest convolMatrice) {
         this.frame = frame;
         this.t = t;
         this.interface1 = interface1;
         this.slider = slider;
+        this.convolMatrice = convolMatrice;
     }
 
 

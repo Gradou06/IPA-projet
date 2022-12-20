@@ -50,6 +50,7 @@ public class TraitementGrey extends Traitement {
     public void reverseImg(){
             byte[] reversed = new byte[this.tabGrey.length];
             for (int j=0;j<this.height;j++){
+                reversed[(j*this.width)]=this.tabGrey[(j*this.width)+this.width-1];
                 for (int i=this.width-1; i>0; i--){
                     reversed[(j*this.width)+this.width-i]=this.tabGrey[(j*this.width)+i];
                     }
@@ -103,6 +104,9 @@ public class TraitementGrey extends Traitement {
 
         public void reverseHautBas(){
             byte[] reversed = new byte[this.tabGrey.length];
+            for (int i=0; i<this.width;i++){
+                reversed[i]=this.tabGrey[this.width*(this.height-1)+i];
+            }
             for (int j=0;j<this.height;j++){
                 for (int i=0; i<this.width; i++){
                     reversed[(j*this.width)+i]=this.tabGrey[((this.height-j-1)*this.width)+i];

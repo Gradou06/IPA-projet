@@ -32,6 +32,7 @@ public class TraitementRGB extends Traitement{
     public void reverseImg(){
         int[] reversed = new int[this.tabRGB.length];
         for (int j=0;j<this.height;j++){
+            reversed[(j*this.width)]=this.tabRGB[(j*this.width)+this.width-1];
             for (int i=this.width-1; i>0; i--){
                 reversed[(j*this.width)+this.width-i]=this.tabRGB[(j*this.width)+i];
                 }
@@ -42,6 +43,9 @@ public class TraitementRGB extends Traitement{
 
     public void reverseHautBas(){
         int[] reversed = new int[this.tabRGB.length];
+        for (int i=0; i<this.width;i++){
+            reversed[i]=this.tabRGB[this.width*(this.height-1)+i];
+        }
         for (int j=this.height-1;j>0;j--){
             for (int i=0; i<this.width; i++){
                 reversed[((this.height-j)*this.width)+i]=this.tabRGB[(j*this.width)+i];
