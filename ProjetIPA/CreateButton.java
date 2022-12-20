@@ -53,6 +53,7 @@ public class CreateButton {
                 interface1.redefine(t.getWidth(),t.getTabGrey());
             }
             interface1.repaint();
+            menu.updateBack();
             frame.repaint();
         }
     });
@@ -70,6 +71,7 @@ public class CreateButton {
                 interface1.redefine(t.getWidth(),t.getTabGrey());
             }
             interface1.repaint();
+            menu.updateBack();
             frame.repaint();
         }
     });
@@ -87,6 +89,7 @@ public class CreateButton {
                 interface1.redefine(t.getWidth(),t.getTabGrey());
             }
             interface1.repaint();
+            menu.updateBack();
             frame.repaint();
         }
     });
@@ -97,6 +100,7 @@ public class CreateButton {
         @Override
         public void actionPerformed(ActionEvent evt) {
             t.changeAssombrissement();
+            menu.updateBack();
             if (t instanceof TraitementRGB) {
                 interface1.redefine(t.getWidth(),t.getTabRGB());
             }
@@ -121,6 +125,7 @@ public class CreateButton {
                 interface1.redefine(t.getWidth(),t.getTabGrey());
             }
             interface1.repaint();
+            menu.updateBack();
             frame.repaint();
         }
     });
@@ -179,7 +184,9 @@ public class CreateButton {
                 interface1.redefine(t.getWidth(),t.getTabGrey());
             }
             interface1.repaint();
+            menu.updateBack();
             frame.repaint();
+            
         }
 
     });
@@ -199,6 +206,7 @@ public class CreateButton {
                 interface1.redefine(t.getWidth(),t.getTabGrey());
             }
             menu.redefine(t);
+            menu.updateBack();
             interface1.repaint();
             frame.repaint();
         }

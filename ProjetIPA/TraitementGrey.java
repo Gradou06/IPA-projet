@@ -22,6 +22,14 @@ public class TraitementGrey extends Traitement {
         super(tabGrey, width, height);
     }
 
+    public byte[][] getTabGreyBack(){
+        return this.tabGreyBack;
+    }
+
+    public int[][] getTabRGBBack(){
+        return null;
+    }
+
 
     public void imgToPixelTab(){
         System.out.println("Grey");

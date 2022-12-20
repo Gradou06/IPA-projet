@@ -49,4 +49,6 @@ public abstract class Traitement {
     public abstract void changeContraste(int p);
     public abstract void convolution(int[][] matriceC);
     public abstract int[] normalize(byte[] tabByte);
+    public abstract byte[][] getTabGreyBack();
+    public abstract int[][] getTabRGBBack();
 }

@@ -25,6 +25,7 @@ public class Menu extends JMenuBar{
     private JFrame frame;
     private JMenuBar menubar;
     private TextFieldTest convolMatrice;
+    private JMenuItem back;
 
     public Menu(Traitement t, Interface interface1 , JFrame frame, TextFieldTest convolMatrice) {
         this.t = t;
@@ -38,7 +39,8 @@ public class Menu extends JMenuBar{
     // LA BARRE DE MENU
     JMenu menu = new JMenu("File");
     JMenu menu2 = new JMenu("Edit");
-    JMenuItem back = new JMenuItem("Back");
+    back = new JMenuItem("Back");
+    back.setEnabled(false);
     JMenuItem save = new JMenuItem("Save");
     JMenuItem exit = new JMenuItem("Exit");
     JMenuItem changeImg = new JMenuItem("Change image");
@@ -133,15 +135,22 @@ public class Menu extends JMenuBar{
             t.back();
             if (t instanceof TraitementRGB) {
                 interface1.redefine(t.getWidth(),t.getTabRGB());
+                if (t.getTabRGBBack()[1] == null) {
+                    back.setEnabled(false);
+                }
             }
             else{
                 interface1.redefine(t.getWidth(),t.getTabGrey());
+                if (t.getTabGreyBack()[1] == null) {
+                    back.setEnabled(false);
+                }
             }
             interface1.repaint();
             frame.repaint();
         }
     });
 
+    
 
     menu.add(save);
     menu.add(changeImg);
@@ -158,6 +167,20 @@ public class Menu extends JMenuBar{
 
     public void redefine(Traitement t) {
         this.t = t;
+    }
+
+    public void updateBack() {
+        if (t instanceof TraitementRGB && t.getTabRGBBack()[1] == null) {
+            back.setEnabled(false);
+            System.out.println("false");
+        }
+        else if (t instanceof TraitementGrey && t.getTabGreyBack()[1] == null) {
+            back.setEnabled(false);
+        }
+        else{
+            back.setEnabled(true);
+            System.out.println("true");
+        }
     }
 }
 

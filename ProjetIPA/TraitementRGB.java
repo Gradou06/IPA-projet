@@ -40,6 +40,14 @@ public class TraitementRGB extends Traitement{
         this.tabRGB=reversed;
         this.newAction();
         }
+    
+    public int[][] getTabRGBBack(){
+        return this.tabRGBBack;
+    }
+
+    public byte[][] getTabGreyBack(){
+        return null;
+    }
 
     public void reverseHautBas(){
         int[] reversed = new int[this.tabRGB.length];
