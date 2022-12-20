@@ -133,7 +133,14 @@ public class CreateButton {
         public void actionPerformed(ActionEvent evt) {
             convolMatrice.setMatriceLength(true);
             convolMatrice.build();
-            
+            if (t instanceof TraitementRGB) {
+                interface1.redefine(t.getWidth(),t.getTabRGB());
+            }
+            else{
+                interface1.redefine(t.getWidth(),t.getTabGrey());
+            }
+            interface1.repaint();
+            frame.repaint();
         }
     });
 
@@ -145,7 +152,14 @@ public class CreateButton {
         public void actionPerformed(ActionEvent evt) {
             convolMatrice.setMatriceLength(false);
             convolMatrice.build();
-            
+            if (t instanceof TraitementRGB) {
+                interface1.redefine(t.getWidth(),t.getTabRGB());
+            }
+            else{
+                interface1.redefine(t.getWidth(),t.getTabGrey());
+            }
+            interface1.repaint();
+            frame.repaint();
 
         }
     });

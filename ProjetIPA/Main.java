@@ -23,7 +23,8 @@ public class Main {
         Interface interface1;
     JFrame frame = new JFrame("Traitement d'image");
     interface1 = new Interface(t.getWidth(),t.getTabRGB());
-    Menu menu = new Menu(t,interface1,frame);
+    TextFieldTest convolM=new TextFieldTest(frame,t,interface1);
+    Menu menu = new Menu(t,interface1,frame,convolM);
     menu.build();
     frame.add(interface1);
     frame.pack();

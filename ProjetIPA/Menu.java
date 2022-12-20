@@ -24,11 +24,13 @@ public class Menu extends JMenuBar{
     private Interface interface1;
     private JFrame frame;
     private JMenuBar menubar;
+    private TextFieldTest convolMatrice;
 
-    public Menu(Traitement t, Interface interface1 , JFrame frame) {
+    public Menu(Traitement t, Interface interface1 , JFrame frame, TextFieldTest convolMatrice) {
         this.t = t;
         this.interface1 = interface1;
         this.frame = frame;
+        this.convolMatrice = convolMatrice;
         this.menubar = new JMenuBar();
     }
 
@@ -68,7 +70,6 @@ public class Menu extends JMenuBar{
     // Définir le texte de l'étiquette
     label.setText("" + slider.getValue()); 
 
-    TextFieldTest convolMatrice = new TextFieldTest(frame, t, interface1);
     CreateButton button = new CreateButton(frame, t, interface1, slider, this);
     button.setConvolMatrice(convolMatrice);
     button.build();
