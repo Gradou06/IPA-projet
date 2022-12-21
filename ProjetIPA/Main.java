@@ -24,7 +24,7 @@ public class Main {
         // JUSQUE LA
         Interface interface1;
     JFrame frame = new JFrame("Traitement d'image");
-    interface1 = new Interface(t.getWidth(),t.getTabRGB());
+    interface1 = new Interface(t.getWidth(),t.getTabRGB(),fn);
     TextFieldTest convolM=new TextFieldTest(frame,t,interface1);
     Menu menu = new Menu(t,interface1,frame,convolM);
     menu.build();

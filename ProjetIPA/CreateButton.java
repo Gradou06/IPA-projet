@@ -55,10 +55,10 @@ public class CreateButton {
         public void actionPerformed(ActionEvent evt) {
             t.changeContraste(slider.getValue());
             if (t instanceof TraitementRGB) {
-                interface1.redefine(t.getWidth(),t.getTabRGB());
+                interface1.redefine(t.getWidth(),t.getTabRGB(),t.imgName);
             }
             else{
-                interface1.redefine(t.getWidth(),t.getTabGrey());
+                interface1.redefine(t.getWidth(),t.getTabGrey(),t.imgName);
             }
             interface1.repaint();
             menu.updateBack();
@@ -73,10 +73,10 @@ public class CreateButton {
         public void actionPerformed(ActionEvent evt) {
             t.reverseHautBas();
             if (t instanceof TraitementRGB) {
-                interface1.redefine(t.getWidth(),t.getTabRGB());
+                interface1.redefine(t.getWidth(),t.getTabRGB(),t.imgName);
             }
             else{
-                interface1.redefine(t.getWidth(),t.getTabGrey());
+                interface1.redefine(t.getWidth(),t.getTabGrey(),t.imgName);
             }
             interface1.repaint();
             menu.updateBack();
@@ -91,10 +91,10 @@ public class CreateButton {
         public void actionPerformed(ActionEvent evt) {
             t.reverseImg();
             if (t instanceof TraitementRGB) {
-                interface1.redefine(t.getWidth(),t.getTabRGB());
+                interface1.redefine(t.getWidth(),t.getTabRGB(),t.imgName);
             }
             else{
-                interface1.redefine(t.getWidth(),t.getTabGrey());
+                interface1.redefine(t.getWidth(),t.getTabGrey(),t.imgName);
             }
             interface1.repaint();
             menu.updateBack();
@@ -110,10 +110,10 @@ public class CreateButton {
             t.changeAssombrissement();
             menu.updateBack();
             if (t instanceof TraitementRGB) {
-                interface1.redefine(t.getWidth(),t.getTabRGB());
+                interface1.redefine(t.getWidth(),t.getTabRGB(),t.imgName);
             }
             else{
-                interface1.redefine(t.getWidth(),t.getTabGrey());
+                interface1.redefine(t.getWidth(),t.getTabGrey(),t.imgName);
             }
             interface1.repaint();
             frame.repaint();
@@ -127,10 +127,10 @@ public class CreateButton {
         public void actionPerformed(ActionEvent evt) {
             t.changeEclairage();
             if (t instanceof TraitementRGB) {
-                interface1.redefine(t.getWidth(),t.getTabRGB());
+                interface1.redefine(t.getWidth(),t.getTabRGB(),t.imgName);
             }
             else{
-                interface1.redefine(t.getWidth(),t.getTabGrey());
+                interface1.redefine(t.getWidth(),t.getTabGrey(),t.imgName);
             }
             interface1.repaint();
             menu.updateBack();
@@ -147,10 +147,10 @@ public class CreateButton {
             convolMatrice.setMatriceLength(true);
             convolMatrice.build();
             if (t instanceof TraitementRGB) {
-                interface1.redefine(t.getWidth(),t.getTabRGB());
+                interface1.redefine(t.getWidth(),t.getTabRGB(),t.imgName);
             }
             else{
-                interface1.redefine(t.getWidth(),t.getTabGrey());
+                interface1.redefine(t.getWidth(),t.getTabGrey(),t.imgName);
             }
             interface1.repaint();
             frame.repaint();
@@ -166,10 +166,10 @@ public class CreateButton {
             convolMatrice.setMatriceLength(false);
             convolMatrice.build();
             if (t instanceof TraitementRGB) {
-                interface1.redefine(t.getWidth(),t.getTabRGB());
+                interface1.redefine(t.getWidth(),t.getTabRGB(),t.imgName);
             }
             else{
-                interface1.redefine(t.getWidth(),t.getTabGrey());
+                interface1.redefine(t.getWidth(),t.getTabGrey(),t.imgName);
             }
             interface1.repaint();
             frame.repaint();
@@ -186,10 +186,10 @@ public class CreateButton {
             convolMatrice.actionPerformed(evt);
             t.convolution(convolMatrice.getMatrice());
             if (t instanceof TraitementRGB) {
-                interface1.redefine(t.getWidth(),t.getTabRGB());
+                interface1.redefine(t.getWidth(),t.getTabRGB(),t.imgName);
             }
             else{
-                interface1.redefine(t.getWidth(),t.getTabGrey());
+                interface1.redefine(t.getWidth(),t.getTabGrey(),t.imgName);
             }
             interface1.repaint();
             menu.updateBack();
@@ -211,7 +211,7 @@ public class CreateButton {
                 t.changeColor();
                 t=new TraitementGrey(t.getTabGrey(),t.getWidth(),t.getHeight());
                 t.changeImgName(name);
-                interface1.redefine(t.getWidth(),t.getTabGrey());
+                interface1.redefine(t.getWidth(),t.getTabGrey(),t.imgName);
             }
             menu.redefine(t);
             menu.updateBack();
