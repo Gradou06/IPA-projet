@@ -7,13 +7,11 @@ import javax.swing.JPanel;
 import javax.swing.JSlider;
 import java.awt.color.ColorSpace;
 import java.io.File;
-
 import javax.media.jai.JAI;
 import javax.media.jai.RenderedOp;
 import javax.swing.JFileChooser;
 import javax.swing.filechooser.FileNameExtensionFilter;
 import javax.swing.filechooser.FileSystemView;
-
 import java.awt.event.ActionListener;
 import java.awt.image.ColorModel;
 import java.awt.event.ActionEvent;
@@ -186,7 +184,7 @@ public class Menu extends JMenuBar{
     }
 
     /*
-     * 
+     * Permets de griser, ou non, le bouton "back" s'il est utilisable ou non.
      */
     public void updateBack() {
         if (t instanceof TraitementRGB && t.getTabRGBBack()[1] == null) {

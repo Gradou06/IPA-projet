@@ -1,5 +1,8 @@
-import javax.swing.*;
-import java.awt.event.*;
+import javax.swing.JButton;
+import javax.swing.JFrame;
+import javax.swing.JTextField;
+import java.awt.event.ActionListener;
+import java.awt.event.ActionEvent;
 /*
  * Permets de créer des boites de textes
  * Elles permettent de rentrer la matrice de convolution voulu
@@ -226,7 +229,6 @@ public class TextFieldTest implements ActionListener
         
     }
     catch(Exception e){
-        JOptionPane.showMessageDialog(null, e);
         return false;
     }
     return true;

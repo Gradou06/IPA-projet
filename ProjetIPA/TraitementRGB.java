@@ -260,6 +260,7 @@ public class TraitementRGB extends Traitement{
     }
     
     /* 
+     * Ne fait rien
      */
     public int[] normalize(byte[] tabByte){return (new int[0]);}
 

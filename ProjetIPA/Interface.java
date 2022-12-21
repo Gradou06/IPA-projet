@@ -79,6 +79,12 @@ public class Interface extends JPanel{
             }
         }
     }}
+
+    /*
+     * Redéfinie l'image dessinée sur l'interface dans le cas d'une image en RGB
+     * @param width la taille de l'image
+     * @param tab le tableau de int contenant la valeur de chaque pixel
+     */
     
     public void redefine(int width, int[] tab){
         this.tab = tab;
@@ -97,6 +103,11 @@ public class Interface extends JPanel{
     }
     }
     
+    /*
+     * Redéfinie l'image dessinée sur l'interface dans le cas d'une image en gris
+     * @param width la taille de l'image
+     * @param tab le tableau de byte contenant la valeur de chaque pixel
+     */
 
     public void redefine(int width, byte[] tab){
         this.tabG = tab;
@@ -114,6 +125,10 @@ public class Interface extends JPanel{
         System.out.println("Erreur");
     }
 }
+
+    /*
+     * Permets de comptais le nombre de pixel de chaque couleur pour une image en RGB
+     */
 
 public String RGBtoExcelFormat(){
     String out="";
@@ -135,6 +150,10 @@ public String RGBtoExcelFormat(){
     }
     return out;
 }
+
+    /*
+     * Permets de comptais le nombre de pixel de chaque niveau de gris pour une image en gris
+     */
 
     public String GreytoExcelFormat(){
         String out="";

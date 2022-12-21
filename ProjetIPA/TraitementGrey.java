@@ -2,10 +2,8 @@ import java.awt.image.BufferedImage;
 import java.awt.image.Raster;
 import javax.media.jai.JAI;
 import javax.media.jai.RasterFactory;
-
 import java.awt.Point;
 import javax.media.jai.RenderedOp;
-
 import java.awt.image.DataBufferByte;
 import java.awt.image.DataBuffer;
 import java.awt.image.SampleModel;
@@ -163,23 +161,7 @@ public class TraitementGrey extends Traitement {
             this.newAction();
             }
 
-    public void changeColor(){ //ILLEGAL
-            int red;
-            int green;
-            int blue;
-            int alpha;
-            this.tabRGB = new int[this.tabGrey.length];
-            for (int i=0; i<this.tabGrey.length; i++){
-                red = Byte.toUnsignedInt(this.tabGrey[i]);
-                green = Byte.toUnsignedInt(this.tabGrey[i]);
-                blue = Byte.toUnsignedInt(this.tabGrey[i]);
-                alpha = 255;
-                this.tabRGB[i]= (alpha << 24) | (red << 16) | (green << 8) | blue;
-                }
-                this.isRGB=true;
-                this.tabGrey=null;
-                this.newAction();
-            }
+    public void changeColor(){}
         /*
          * Permets de récuperer l'image d'avant l'action précédente
          */
