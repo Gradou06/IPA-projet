@@ -146,7 +146,7 @@ public String RGBtoExcelFormat(){
         blue[tab[i] & 0xFF]++;
     }
     for (int i=0; i<256; i++){
-        out+=i+";"+red[i]+";"+green[i]+";"+blue[i]+";\n";
+        out+=i+";"+red[i]+";"+green[i]+";"+blue[i]+"\n";
     }
     return out;
 }
@@ -169,7 +169,7 @@ public String RGBtoExcelFormat(){
             grey[tabInt[i]]++;
         }
         for (int i=0; i<256; i++){
-            out+=i+";"+grey[i]+";\n";
+            out+=i+";"+grey[i]+"\n";
         }
         return out;
     }
