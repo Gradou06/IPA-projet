@@ -22,7 +22,6 @@ public class TraitementRGB extends Traitement{
      * Transforme une image en un tableau de pixel
      */
     public void imgToPixelTab(){
-        System.out.println("RGB");
         RenderedOp ropimage; 
         ropimage = JAI.create("fileload", imgName);
         this.width = ropimage.getWidth();

@@ -108,16 +108,15 @@ public class Menu extends JMenuBar{
             t = new TraitementRGB(fn);
         }
         else{
-            System.out.println("GREY");
             t = new TraitementGrey(fn);
             }
         t.setImgName(fn);
         if (t instanceof TraitementRGB) {
-            interface1.redefine(t.getWidth(),t.getTabRGB());
+            interface1.redefine(t.getWidth(),t.getTabRGB(),t.imgName);
         }
         else{
             // marche bien ici
-            interface1.redefine(t.getWidth(),t.getTabGrey());
+            interface1.redefine(t.getWidth(),t.getTabGrey(),t.imgName);
         }
             button.redefine(frame, t, interface1, slider, convolMatrice);
             interface1.repaint();
@@ -129,7 +128,6 @@ public class Menu extends JMenuBar{
     save.addActionListener(new ActionListener() {
         @Override
         public void actionPerformed(ActionEvent evt) {
-            System.out.println(t.imgName);
             t.saveImg(t.imgName);
         }
     });
@@ -144,13 +142,13 @@ public class Menu extends JMenuBar{
         public void actionPerformed(ActionEvent evt) {
             t.back();
             if (t instanceof TraitementRGB) {
-                interface1.redefine(t.getWidth(),t.getTabRGB());
+                interface1.redefine(t.getWidth(),t.getTabRGB(),t.imgName);
                 if (t.getTabRGBBack()[1] == null) {
                     back.setEnabled(false);
                 }
             }
             else{
-                interface1.redefine(t.getWidth(),t.getTabGrey());
+                interface1.redefine(t.getWidth(),t.getTabGrey(),t.imgName);
                 if (t.getTabGreyBack()[1] == null) {
                     back.setEnabled(false);
                 }
@@ -189,14 +187,12 @@ public class Menu extends JMenuBar{
     public void updateBack() {
         if (t instanceof TraitementRGB && t.getTabRGBBack()[1] == null) {
             back.setEnabled(false);
-            System.out.println("false");
         }
         else if (t instanceof TraitementGrey && t.getTabGreyBack()[1] == null) {
             back.setEnabled(false);
         }
         else{
             back.setEnabled(true);
-            System.out.println("true");
         }
     }
 }

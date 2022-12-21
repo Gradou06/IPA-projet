@@ -43,7 +43,6 @@ public class TraitementGrey extends Traitement {
      * Transforme une image en un tableau de pixel
      */
     public void imgToPixelTab(){
-        System.out.println("Grey");
         RenderedOp ropimage;
         ropimage = JAI.create("fileload", imgName);
         this.width = ropimage.getWidth();
@@ -66,7 +65,6 @@ public class TraitementGrey extends Traitement {
         BufferedImage image = new BufferedImage(IMG_WIDTH, IMG_HEIGHT, BufferedImage.TYPE_BYTE_GRAY);
         image.setData(Raster.createRaster(sm, new DataBufferByte(this.tabGrey, this.tabGrey.length), new Point()));
         JAI.create("filestore",image, name.substring(0,name.length()-4)+"-gs.png","PNG");
-        System.out.println(name);
                 }
     /*
      * Permets de retourner l'image de gauche à droite

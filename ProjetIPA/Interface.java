@@ -28,10 +28,23 @@ public class Interface extends JPanel{
      * @param width la taille de l'image
      * @throw Exception lorsqu'il y a une erreur
      */
-    public Interface(int width, int[] tab){
+    public Interface(int width, int[] tab,String name){
         this.tab = tab;
         this.width=width;
-        path = Paths.get("test.csv");
+        try{
+            changePath(name);
+            bw= Files.newBufferedWriter(path);
+            bw.write(RGBtoExcelFormat());
+            bw.newLine();
+            bw.close();
+    }
+    catch(Exception e){
+        return;
+    }
+    }
+
+    public void changePath(String name){
+        path = Paths.get(name.substring(0,name.length()-4)+".csv");
         try{
             if (!Files.exists(path)) {
                 Files.createFile(path);
@@ -40,13 +53,9 @@ public class Interface extends JPanel{
                 Files.delete(path);
                 Files.createFile(path);
             }
-            bw= Files.newBufferedWriter(path);
-            bw.write(RGBtoExcelFormat());
-            bw.newLine();
-            bw.close();
     }
     catch(Exception e){
-        System.out.println("Erreur");
+        return;
     }
     }
 
@@ -86,7 +95,8 @@ public class Interface extends JPanel{
      * @param tab le tableau de int contenant la valeur de chaque pixel
      */
     
-    public void redefine(int width, int[] tab){
+    public void redefine(int width, int[] tab, String name){
+        changePath(name);
         this.tab = tab;
         this.width=width;
         this.type="rgb";
@@ -99,7 +109,7 @@ public class Interface extends JPanel{
             bw.close();
     }
     catch(Exception e){
-        System.out.println("Erreur");
+       return;
     }
     }
     
@@ -109,7 +119,8 @@ public class Interface extends JPanel{
      * @param tab le tableau de byte contenant la valeur de chaque pixel
      */
 
-    public void redefine(int width, byte[] tab){
+    public void redefine(int width, byte[] tab, String name){
+        changePath(name);
         this.tabG = tab;
         this.width=width;
         this.type="grey";
@@ -122,7 +133,7 @@ public class Interface extends JPanel{
             bw.close();
     }
     catch(Exception e){
-        System.out.println("Erreur");
+        return;
     }
 }
 
@@ -175,6 +186,7 @@ public String RGBtoExcelFormat(){
     }
 
 }
+
     
         
     

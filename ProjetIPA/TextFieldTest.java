@@ -251,14 +251,12 @@ public class TextFieldTest implements ActionListener
               for(int j=0;j<max;j++){
                 for(int i=0;i<max;i++){
                     matrice[j][i]=matriceC3[j][i];
-                    System.out.println(matrice[j][i]);
                 }
             }
           }else{
             for(int j=0;j<max;j++){
               for(int i=0;i<max;i++){
                   matrice[j][i]=matriceC5[j][i];
-                  System.out.println(matrice[j][i]);
               }
           }
           }
