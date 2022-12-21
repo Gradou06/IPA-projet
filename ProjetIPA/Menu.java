@@ -101,6 +101,9 @@ public class Menu extends JMenuBar{
         File file = choose.getSelectedFile();
         
         String fn = file.getAbsolutePath();
+        if (!(fn.substring(fn.length() - 3).equals("png"))) {
+            return;
+        }
         RenderedOp ropimage;
         ropimage = JAI.create("fileload", fn);
         ColorModel cm = ropimage.getColorModel();
